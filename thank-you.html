@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank You — Kula Kriya</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    :root{ --beige:#F2EEE6; --text:#222; --muted:#515151; --card:#fff; --accent:#111; }
+    body{margin:0;background:var(--beige);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',Inter,'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.5}
+    .wrap{max-width:960px;margin:24px auto;padding:16px}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:22px}
+    h1{font-size:28px;letter-spacing:-.02em;margin:0 0 6px}
+    p{margin:6px 0 12px;color:var(--muted)}
+    .ok{display:none}
+    .warn{display:none;border:1px solid #e0c6c6;background:#fff6f6;color:#7a0000;padding:14px;border-radius:12px;margin:10px 0 18px}
+    .dl{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+    .cta{display:inline-block;background:var(--accent);color:#fff;padding:12px 16px;border-radius:10px;text-decoration:none}
+    .meta{font-size:12px;color:#777;margin-top:16px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Thank you — your order is complete</h1>
+      <p id="sub">We’re verifying your payment. This should only take a moment.</p>
+      <div id="hold" class="warn">
+        <strong>Payment not verified.</strong>
+        <div>Returning you to the checkout…</div>
+      </div>
+
+      <div id="ok" class="ok">
+        <h2 style="letter-spacing:-.02em">Your downloads</h2>
+        <div class="dl">
+          <a class="cta" href="#" id="dl-main">Download — 30 Days of Positivity (ZIP)</a>
+          <a class="cta" href="#" id="dl-bonus">Download — Awake &amp; Aware (ZIP)</a>
+        </div>
+        <div class="meta" id="meta"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+async function verify(){
+  const qs  = new URLSearchParams(location.search);
+  const sid = qs.get('session_id');    // Stripe
+  const oid = qs.get('order_id');      // PayPal
+
+  const hold = document.getElementById('hold');
+  const ok   = document.getElementById('ok');
+  const sub  = document.getElementById('sub');
+  const meta = document.getElementById('meta');
+
+  // If no payment reference at all, bounce straight back to landing with a flag.
+  if (!sid && !oid) {
+    // Replace history so Back won't send them here again
+    history.replaceState(null, '', '/?incomplete=1');
+    location.replace('/?incomplete=1');
+    return;
+  }
+
+  function block(msg){
+    if (msg) sub.textContent = msg;
+    hold.style.display = 'block';
+    ok.style.display = 'none';
+    // soft-redirect after a brief pause
+    setTimeout(() => location.replace('/?incomplete=1'), 1200);
+  }
+
+  function allow(details){
+    hold.style.display = 'none';
+    ok.style.display = 'block';
+    if(details){ meta.textContent = details; }
+    // Replace the history entry so Back returns to landing, not Stripe
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+
+  try {
+    if (sid){
+      const r = await fetch('/.netlify/functions/verify-stripe-session?session_id=' + encodeURIComponent(sid));
+      const j = await r.json();
+      if (j && j.paid){
+        allow(`Verified via Stripe • ${ (j.amount_total/100).toFixed(2) } ${ (j.currency||'USD').toUpperCase() }`);
+        return;
+      }
+      block('We could not verify a completed Stripe payment.');
+      return;
+    }
+    if (oid){
+      const r = await fetch('/.netlify/functions/verify-paypal-order?order_id=' + encodeURIComponent(oid));
+      const j = await r.json();
+      if (j && j.paid){
+        allow('Verified via PayPal • ' + (j.status||''));
+        return;
+      }
+      block('We could not verify a completed PayPal payment.');
+      return;
+    }
+  } catch (e){
+    block('We hit a problem while verifying your payment.');
+  }
+}
+document.addEventListener('DOMContentLoaded', verify);
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "kula-kriya-positivity",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Netlify functions for Stripe & PayPal checkout",
+  "license": "MIT",
+  "dependencies": {
+    "stripe": "^14.0.0",
+    "node-fetch": "^3.3.2"
+  }
+}

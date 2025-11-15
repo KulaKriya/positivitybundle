@@ -1,0 +1,22 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+/index.html
+  # Never aggressively cache HTML
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Long-cache static assets (update filenames if your assets differ)
+/bundle.webp
+  Cache-Control: public, max-age=31536000, immutable
+/journal.webp
+  Cache-Control: public, max-age=31536000, immutable
+/logo.webp
+  Cache-Control: public, max-age=31536000, immutable
+/video-thumbnail.webp
+  Cache-Control: public, max-age=31536000, immutable
+/tom-profile.webp
+  Cache-Control: public, max-age=31536000, immutable
