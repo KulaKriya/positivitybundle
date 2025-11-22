@@ -558,6 +558,9 @@ function renderPayPalButtons(mountId, amountUSD, product){
     createOrder: async () => {
       var bumpBox = findBumpFor(mountId);
       var chosenProduct = (bumpBox && bumpBox.checked) ? 'BUNDLE_39' : product;
+      var chosenAmount = (bumpBox && bumpBox.checked)
+        ? 39.00
+        : (typeof amountUSD === 'number' ? amountUSD : 29.00);
 
       trackCheckout();
       try{
@@ -565,7 +568,7 @@ function renderPayPalButtons(mountId, amountUSD, product){
         const r = await fetch('/.netlify/functions/paypal-create-order', {
           method:'POST',
           headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ utm, product: chosenProduct })
+          body: JSON.stringify({ utm, product: chosenProduct, amount: chosenAmount })
         });
         const d = await r.json();
         if(d && d.id) return d.id;
