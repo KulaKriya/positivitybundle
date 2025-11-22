@@ -30,7 +30,7 @@ exports.handler = async (event) => {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${success}?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${success}?product=${useBundle ? "BUNDLE_39" : "POSITIVITY"}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: success.replace("/thank-you", "/") + "?canceled=1",
       metadata: { product: useBundle ? "BUNDLE_39" : "POSITIVITY" }
     });
