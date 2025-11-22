@@ -25,8 +25,9 @@ exports.handler = async (event) => {
 
     const amount = cap?.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.value || '29.00';
     const currency = cap?.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.currency_code || 'USD';
+    const product = cap?.purchase_units?.[0]?.description || 'POSITIVITY';
 
-    const redirect = `${PAYPAL_SUCCESS_URL}&amount=${encodeURIComponent(amount)}&currency=${encodeURIComponent(currency)}&order_id=${encodeURIComponent(orderID)}`;
+    const redirect = `${PAYPAL_SUCCESS_URL}&product=${encodeURIComponent(product)}&amount=${encodeURIComponent(amount)}&currency=${encodeURIComponent(currency)}&order_id=${encodeURIComponent(orderID)}`;
     return { statusCode: 200, body: JSON.stringify({ redirect }) };
   } catch (err) {
     console.error(err);
