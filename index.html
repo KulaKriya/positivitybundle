@@ -197,10 +197,14 @@
 
   /* Order bump */
   .bump{margin:.4rem 0 0}
-  .bump-label{display:flex;align-items:center;justify-content:flex-start;gap:8px;font-size:.95rem;color:#333;cursor:pointer}
-  .bump input{width:18px;height:18px}
-  .bump-text{display:flex;flex-direction:column;line-height:1.25;}
+  .bump-label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.95rem;color:#333;cursor:pointer}
+  .bump input{width:18px;height:18px;margin-right:4px}
+  .bump-text{display:flex;flex-direction:column;line-height:1.25;flex:1;min-width:0;}
   .bump-line{display:block;}
+  .bump-thumb{width:44px;height:auto;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.12);flex-shrink:0;}
+  @media (max-width:480px){
+    .bump-thumb{width:40px;}
+  }
 
 </style>
 
