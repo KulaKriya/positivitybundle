@@ -196,11 +196,36 @@
 
 
   /* Order bump */
-  .bump{margin:.4rem 0 0}
-  .bump-label{display:flex;align-items:center;justify-content:flex-start;gap:8px;font-size:.95rem;color:#333;cursor:pointer}
-  .bump input{width:18px;height:18px}
-  .bump-text{display:flex;flex-direction:column;line-height:1.25;}
-  .bump-line{display:block;}
+  .bump{margin:.65rem 0 0}
+  .bump-card{
+    display:block;
+    width:100%;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:13px 14px;
+    cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.04);
+    transition:border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+  .bump-card:hover{border-color:#111;box-shadow:0 8px 22px rgba(0,0,0,.08);transform:translateY(-1px)}
+  .bump-inner{display:flex;align-items:center;gap:12px}
+  .bump-card input{width:20px;height:20px;flex:0 0 auto;accent-color:#111}
+  .bump-content{display:flex;align-items:center;justify-content:space-between;gap:14px;flex:1;text-align:left}
+  .bump-text{display:flex;flex-direction:column;line-height:1.22;gap:3px;flex:1}
+  .bump-kicker{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:#0e766e;font-weight:800}
+  .bump-title{font-size:1rem;font-weight:900;color:#111}
+  .bump-outcome{font-size:.9rem;color:#515151}
+  .bump-price{font-size:.92rem;color:#111;font-weight:700}
+  .bump-image{width:58px;height:auto;border-radius:6px;box-shadow:0 5px 12px rgba(0,0,0,.16);transition:transform 160ms ease}
+  .bump-card:hover .bump-image{transform:scale(1.04)}
+  @media (max-width:600px){
+    .bump-card{padding:12px}
+    .bump-content{gap:10px}
+    .bump-image{width:50px}
+    .bump-title{font-size:.96rem}
+    .bump-outcome,.bump-price{font-size:.86rem}
+  }
 
 </style>
 
@@ -278,13 +303,19 @@ fbq('track', 'PageView');
     <div class="cta-row">
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-hero" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4" aria-label="Start your 30-day reset for $29">Start your 30-day reset for $29</a>
 <div class="bump">
-  <label class="bump-label">
-    <input type="checkbox" id="bump-hero"> 
-    <span class="bump-text">
-      <span class="bump-line">Add</span>
-      <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
-      <span class="bump-line">for just $10 (normally $24)</span>
-    </span>
+  <label class="bump-card">
+    <div class="bump-inner">
+      <input type="checkbox" id="bump-hero" checked>
+      <div class="bump-content">
+        <div class="bump-text">
+          <span class="bump-kicker">Complete the full system</span>
+          <span class="bump-title">Awake &amp; Aware: The Art of Meditation</span>
+          <span class="bump-outcome">Build a deeper, more consistent practice beyond the 30 days</span>
+          <span class="bump-price">Included today for just $10 (normally $24)</span>
+        </div>
+        <img src="awake_aware.webp" alt="Awake &amp; Aware book" class="bump-image">
+      </div>
+    </div>
   </label>
 </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
@@ -329,13 +360,19 @@ fbq('track', 'PageView');
       </div>
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-mid" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Start My 30-Day Shift $29</a>
 <div class="bump">
-  <label class="bump-label">
-    <input type="checkbox" id="bump-mid"> 
-    <span class="bump-text">
-      <span class="bump-line">Add</span>
-      <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
-      <span class="bump-line">for just $10 (normally $24)</span>
-    </span>
+  <label class="bump-card">
+    <div class="bump-inner">
+      <input type="checkbox" id="bump-mid" checked>
+      <div class="bump-content">
+        <div class="bump-text">
+          <span class="bump-kicker">Complete the full system</span>
+          <span class="bump-title">Awake &amp; Aware: The Art of Meditation</span>
+          <span class="bump-outcome">Build a deeper, more consistent practice beyond the 30 days</span>
+          <span class="bump-price">Included today for just $10 (normally $24)</span>
+        </div>
+        <img src="awake_aware.webp" alt="Awake &amp; Aware book" class="bump-image">
+      </div>
+    </div>
   </label>
 </div>
     </div>
@@ -440,13 +477,19 @@ fbq('track', 'PageView');
 </div>
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-after-guarantee" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Start My 30-Day Shift $29</a>
 <div class="bump">
-  <label class="bump-label">
-    <input type="checkbox" id="bump-after"> 
-    <span class="bump-text">
-      <span class="bump-line">Add</span>
-      <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
-      <span class="bump-line">for just $10 (normally $24)</span>
-    </span>
+  <label class="bump-card">
+    <div class="bump-inner">
+      <input type="checkbox" id="bump-after" checked>
+      <div class="bump-content">
+        <div class="bump-text">
+          <span class="bump-kicker">Complete the full system</span>
+          <span class="bump-title">Awake &amp; Aware: The Art of Meditation</span>
+          <span class="bump-outcome">Build a deeper, more consistent practice beyond the 30 days</span>
+          <span class="bump-price">Included today for just $10 (normally $24)</span>
+        </div>
+        <img src="awake_aware.webp" alt="Awake &amp; Aware book" class="bump-image">
+      </div>
+    </div>
   </label>
 </div>
     </div>
@@ -538,14 +581,30 @@ fbq('track', 'PageView');
   }
 
   document.addEventListener('DOMContentLoaded', function(){
+    function updateButton(btn){
+      var parent = btn.closest('section, .panel, .hero-panel') || document;
+      var bump = parent.querySelector('input[id^="bump-"]');
+      var useBundle = bump && bump.checked;
+      var nextUrl = useBundle ? btn.dataset.bundleUrl : btn.dataset.baseUrl;
+      if (nextUrl) btn.href = nextUrl;
+      if (btn.id !== 'cta-aware-stripe') {
+        btn.textContent = useBundle ? 'Start your full reset for $39.99' : 'Start your 30-day reset for $29';
+      }
+    }
+
     document.querySelectorAll('a.js-checkout').forEach(function(btn){
+      updateButton(btn);
+      var parent = btn.closest('section, .panel, .hero-panel') || document;
+      var bump = parent.querySelector('input[id^="bump-"]');
+      if (bump) {
+        bump.addEventListener('change', function(){ updateButton(btn); });
+      }
       btn.addEventListener('click', function(){
+        updateButton(btn);
         var parent = btn.closest('section, .panel, .hero-panel') || document;
         var bump = parent.querySelector('input[id^="bump-"]');
         var useBundle = bump && bump.checked;
-        var nextUrl = useBundle ? btn.dataset.bundleUrl : btn.dataset.baseUrl;
-        if (nextUrl) btn.href = nextUrl;
-        trackCheckout(useBundle ? '30 Days + Awake & Aware Bundle' : btn.textContent.trim());
+        trackCheckout(useBundle ? '30 Days + Awake & Aware Bundle' : '30 Days of Positivity');
       });
     });
   });
