@@ -238,13 +238,17 @@ gtag('js', new Date());
 gtag('config', 'G-ZK9V7QNHVD');
 </script>
 
-<!-- Meta Pixel (keep your original) -->
+<!-- Meta Pixel -->
 <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '1289131492587826');
 fbq('track', 'PageView');
 </script>
@@ -576,8 +580,25 @@ fbq('track', 'PageView');
 <script>
 (function(){
   function trackCheckout(label){
-    try { if (window.fbq) fbq('track', 'InitiateCheckout', {content_name: label || 'Kula Kriya checkout'}); } catch(e){}
-    try { if (window.gtag) gtag('event', 'begin_checkout', {event_category: 'checkout', event_label: label || 'Kula Kriya checkout'}); } catch(e){}
+    try {
+      if (window.fbq) {
+        fbq('track', 'ViewContent', {content_name: label || 'Kula Kriya checkout'});
+        fbq('track', 'InitiateCheckout', {content_name: label || 'Kula Kriya checkout'});
+      }
+    } catch(e) {}
+
+    try {
+      if (window.gtag) {
+        gtag('event', 'view_content', {
+          event_category: 'checkout',
+          event_label: label || 'Kula Kriya checkout'
+        });
+        gtag('event', 'begin_checkout', {
+          event_category: 'checkout',
+          event_label: label || 'Kula Kriya checkout'
+        });
+      }
+    } catch(e) {}
   }
 
   document.addEventListener('DOMContentLoaded', function(){
@@ -586,7 +607,9 @@ fbq('track', 'PageView');
       var bump = parent.querySelector('input[id^="bump-"]');
       var useBundle = bump && bump.checked;
       var nextUrl = useBundle ? btn.dataset.bundleUrl : btn.dataset.baseUrl;
+
       if (nextUrl) btn.href = nextUrl;
+
       if (btn.id !== 'cta-aware-stripe') {
         btn.textContent = useBundle ? 'Start your full reset for $39.99' : 'Start your 30-day reset for $29';
       }
@@ -595,25 +618,30 @@ fbq('track', 'PageView');
     document.querySelectorAll('a.js-checkout').forEach(function(btn){
       updateButton(btn);
 
-      // Track intent
-      if (window.fbq) fbq('track', 'ViewContent');
       var parent = btn.closest('section, .panel, .hero-panel') || document;
       var bump = parent.querySelector('input[id^="bump-"]');
-      if (bump) {
-        bump.addEventListener('change', function(){ updateButton(btn);
 
-      // Track intent
-      if (window.fbq) fbq('track', 'ViewContent'); });
+      if (bump) {
+        bump.addEventListener('change', function(){
+          updateButton(btn);
+        });
       }
-      btn.addEventListener('click', function(){
+
+      btn.addEventListener('click', function(event){
+        event.preventDefault();
         updateButton(btn);
 
-      // Track intent
-      if (window.fbq) fbq('track', 'ViewContent');
         var parent = btn.closest('section, .panel, .hero-panel') || document;
         var bump = parent.querySelector('input[id^="bump-"]');
         var useBundle = bump && bump.checked;
-        trackCheckout(useBundle ? '30 Days + Awake & Aware Bundle' : '30 Days of Positivity');
+        var label = useBundle ? '30 Days + Awake & Aware Bundle' : '30 Days of Positivity';
+        var destination = btn.href;
+
+        trackCheckout(label);
+
+        setTimeout(function(){
+          window.location.href = destination;
+        }, 180);
       });
     });
   });
