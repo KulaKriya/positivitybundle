@@ -305,7 +305,7 @@ fbq('track', 'PageView');
 <div class="bump">
   <label class="bump-card">
     <div class="bump-inner">
-      <input type="checkbox" id="bump-hero">
+      <input type="checkbox" id="bump-hero" checked>
       <div class="bump-content">
         <div class="bump-text">
           <span class="bump-kicker">Complete the full system</span>
@@ -362,7 +362,7 @@ fbq('track', 'PageView');
 <div class="bump">
   <label class="bump-card">
     <div class="bump-inner">
-      <input type="checkbox" id="bump-mid">
+      <input type="checkbox" id="bump-mid" checked>
       <div class="bump-content">
         <div class="bump-text">
           <span class="bump-kicker">Complete the full system</span>
@@ -479,7 +479,7 @@ fbq('track', 'PageView');
 <div class="bump">
   <label class="bump-card">
     <div class="bump-inner">
-      <input type="checkbox" id="bump-after">
+      <input type="checkbox" id="bump-after" checked>
       <div class="bump-content">
         <div class="bump-text">
           <span class="bump-kicker">Complete the full system</span>
@@ -594,13 +594,22 @@ fbq('track', 'PageView');
 
     document.querySelectorAll('a.js-checkout').forEach(function(btn){
       updateButton(btn);
+
+      // Track intent
+      if (window.fbq) fbq('track', 'ViewContent');
       var parent = btn.closest('section, .panel, .hero-panel') || document;
       var bump = parent.querySelector('input[id^="bump-"]');
       if (bump) {
-        bump.addEventListener('change', function(){ updateButton(btn); });
+        bump.addEventListener('change', function(){ updateButton(btn);
+
+      // Track intent
+      if (window.fbq) fbq('track', 'ViewContent'); });
       }
       btn.addEventListener('click', function(){
         updateButton(btn);
+
+      // Track intent
+      if (window.fbq) fbq('track', 'ViewContent');
         var parent = btn.closest('section, .panel, .hero-panel') || document;
         var bump = parent.querySelector('input[id^="bump-"]');
         var useBundle = bump && bump.checked;
