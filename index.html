@@ -225,11 +225,31 @@ fbq('track', 'PageView');
 
 
   /* Order bump */
-  .bump{margin:.4rem 0 0}
-  .bump-label{display:flex;align-items:center;justify-content:flex-start;gap:8px;font-size:.95rem;color:#333;cursor:pointer}
-  .bump input{width:18px;height:18px}
-  .bump-text{display:flex;flex-direction:column;line-height:1.25;}
+  .bump{margin:.55rem auto .15rem;max-width:560px}
+  .bump-label{
+    display:grid;
+    grid-template-columns:24px 1fr 64px;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:14px;
+    padding:10px 12px;
+    font-size:.95rem;
+    color:#333;
+    cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.04);
+  }
+  .bump input{width:18px;height:18px;margin:0}
+  .bump-text{display:flex;flex-direction:column;line-height:1.22;text-align:center;}
   .bump-line{display:block;}
+  .bump-kicker{font-weight:800;color:#111}
+  .bump-img{width:58px;height:auto;border-radius:7px;justify-self:end}
+  @media (max-width:520px){
+    .bump-label{grid-template-columns:24px 1fr 54px;gap:8px;padding:9px 10px}
+    .bump-img{width:50px}
+  }
 
 </style>
 
@@ -272,10 +292,11 @@ gtag('config', 'G-ZK9V7QNHVD');
   <!-- HERO -->
   <section class="container center hero-panel">
     <h1>
-      <span class="h1-main">Feel Different in 10 Minutes a Day</span>
-      <span class="h1-sub">A 30-day guided challenge to reset stress, sleep better, and build a calmer, happier self.</span>
+      <span class="h1-main">Change Your Mindset in 10 Minutes a Day</span>
+      <span class="h1-sub">A 30-day guided system to calm your mind and feel in control again.</span>
     </h1>
-    <p class="sub">Daily 5-15 minute guided sessions using breathwork, body scans, affirmations, visualisations, and Solfeggio sound healing (528 Hz).</p>
+    <p class="sub">Daily 5-15 minute guided sessions using breathwork, body scans, affirmations, visualisations, and Solfeggio sound healing (528&nbsp;Hz).</p>
+    <p class="sub"><strong>Just press play each day and follow a simple, structured system.</strong></p>
 
     <div class="proofbar">
       <span class="pill"><span class="dot"></span>Trusted by 200,000+ monthly Spotify listeners</span>
@@ -298,12 +319,13 @@ gtag('config', 'G-ZK9V7QNHVD');
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-hero" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4" aria-label="Start your 30-day reset for $29">Start your 30-day reset for $29</a>
 <div class="bump">
   <label class="bump-label">
-    <input type="checkbox" id="bump-hero"> 
+    <input type="checkbox" id="bump-hero">
     <span class="bump-text">
-      <span class="bump-line">Add</span>
+      <span class="bump-line bump-kicker">Upgrade Your Reset (Recommended)</span>
       <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
-      <span class="bump-line">for just $10 (normally $24)</span>
+      <span class="bump-line">Go deeper with guided practices + the full meditation system for just $10</span>
     </span>
+    <img class="bump-img" src="awake_aware.webp" alt="Awake &amp; Aware book"/>
   </label>
 </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
@@ -312,7 +334,7 @@ gtag('config', 'G-ZK9V7QNHVD');
       
         <span style="border:1px solid var(--border);background:#fff;border-radius:10px;padding:.4rem .6rem;font-size:.9rem;color:#333">Card, PayPal, Apple Pay & Google Pay</span>
 </div>
-      <div class="cta-sub">Join hundreds already transforming their lives<br/><strong>Limited launch price $29 · Usually $59</strong>.</div>
+      <div class="cta-sub">Instant access. No subscriptions. Yours to keep.<br/>Used daily by people struggling with stress, overthinking and low mood.<br/><strong>Limited launch price $29 · Usually $59</strong>.</div>
     </div>
   </section>
 
@@ -349,12 +371,13 @@ gtag('config', 'G-ZK9V7QNHVD');
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-mid" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Start My 30-Day Shift $29</a>
 <div class="bump">
   <label class="bump-label">
-    <input type="checkbox" id="bump-mid"> 
+    <input type="checkbox" id="bump-mid">
     <span class="bump-text">
-      <span class="bump-line">Add</span>
+      <span class="bump-line bump-kicker">Upgrade Your Reset (Recommended)</span>
       <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
-      <span class="bump-line">for just $10 (normally $24)</span>
+      <span class="bump-line">Go deeper with guided practices + the full meditation system for just $10</span>
     </span>
+    <img class="bump-img" src="awake_aware.webp" alt="Awake &amp; Aware book"/>
   </label>
 </div>
     </div>
@@ -412,7 +435,7 @@ gtag('config', 'G-ZK9V7QNHVD');
   <li>Plus <strong>6 guided audio meditations</strong> to help you practise with ease</li>
 </ul>
 <p>Normally <strong>$24</strong> for the book and meditations, but when purchased with <strong>30 Days of Positivity</strong>, it’s only <strong>$10</strong>, bringing your total to <strong>$39</strong>.</p>
-<a class="cta cta-secondary js-checkout" href="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4" id="cta-aware-stripe" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Add Awake &amp; Aware and Save 30%</a>
+<a class="cta cta-secondary js-checkout" href="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4" id="cta-aware-stripe" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Upgrade Your Reset and Save 30%</a>
 
 </div>
         <div class="combo-image">
@@ -460,12 +483,13 @@ gtag('config', 'G-ZK9V7QNHVD');
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-after-guarantee" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Start My 30-Day Shift $29</a>
 <div class="bump">
   <label class="bump-label">
-    <input type="checkbox" id="bump-after"> 
+    <input type="checkbox" id="bump-after">
     <span class="bump-text">
-      <span class="bump-line">Add</span>
+      <span class="bump-line bump-kicker">Upgrade Your Reset (Recommended)</span>
       <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
-      <span class="bump-line">for just $10 (normally $24)</span>
+      <span class="bump-line">Go deeper with guided practices + the full meditation system for just $10</span>
     </span>
+    <img class="bump-img" src="awake_aware.webp" alt="Awake &amp; Aware book"/>
   </label>
 </div>
     </div>
