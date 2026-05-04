@@ -579,29 +579,39 @@ fbq('track', 'PageView');
 <!-- Lemon Squeezy checkout wiring -->
 <script>
 (function(){
-  function trackCheckout(label){
+  function safeFbqTrack(eventName, params){
     try {
-      if (window.fbq) {
-        fbq('track', 'ViewContent', {content_name: label || 'Kula Kriya checkout'});
-        fbq('track', 'InitiateCheckout', {content_name: label || 'Kula Kriya checkout'});
-      }
-    } catch(e) {}
-
-    try {
-      if (window.gtag) {
-        gtag('event', 'view_content', {
-          event_category: 'checkout',
-          event_label: label || 'Kula Kriya checkout'
-        });
-        gtag('event', 'begin_checkout', {
-          event_category: 'checkout',
-          event_label: label || 'Kula Kriya checkout'
-        });
-      }
+      if (window.fbq) fbq('track', eventName, params || {});
     } catch(e) {}
   }
 
+  function safeGtag(eventName, params){
+    try {
+      if (window.gtag) gtag('event', eventName, params || {});
+    } catch(e) {}
+  }
+
+  function trackCheckout(label){
+    safeFbqTrack('ViewContent', {content_name: label || 'Kula Kriya checkout'});
+    safeFbqTrack('InitiateCheckout', {content_name: label || 'Kula Kriya checkout'});
+
+    safeGtag('view_content', {
+      event_category: 'checkout',
+      event_label: label || 'Kula Kriya checkout'
+    });
+
+    safeGtag('begin_checkout', {
+      event_category: 'checkout',
+      event_label: label || 'Kula Kriya checkout'
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function(){
+    /* Extra PageView fallback for browser/plugin timing issues */
+    setTimeout(function(){
+      safeFbqTrack('PageView');
+    }, 500);
+
     function updateButton(btn){
       var parent = btn.closest('section, .panel, .hero-panel') || document;
       var bump = parent.querySelector('input[id^="bump-"]');
@@ -629,6 +639,7 @@ fbq('track', 'PageView');
 
       btn.addEventListener('click', function(event){
         event.preventDefault();
+
         updateButton(btn);
 
         var parent = btn.closest('section, .panel, .hero-panel') || document;
@@ -641,7 +652,7 @@ fbq('track', 'PageView');
 
         setTimeout(function(){
           window.location.href = destination;
-        }, 180);
+        }, 250);
       });
     });
   });
