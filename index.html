@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<!-- Meta Pixel -->
+<script>
+window.KK_PIXEL_ID = '1289131492587826';
+
+(function(f,b,e,v,n,t,s){
+  if(f.fbq) return;
+  n = f.fbq = function(){
+    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+  };
+  if(!f._fbq) f._fbq = n;
+  n.push = n;
+  n.loaded = true;
+  n.version = '2.0';
+  n.queue = [];
+  t = b.createElement(e);
+  t.async = true;
+  t.src = v;
+  s = b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t, s);
+})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', window.KK_PIXEL_ID);
+fbq('track', 'PageView');
+
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    if (window.fbq) {
+      fbq('track', 'PageView');
+    }
+  }, 700);
+});
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1289131492587826&ev=PageView&noscript=1"/>
+</noscript>
+
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content="Start your 30 day reset with guided meditations, sound healing and a meditation journal. Calm your mind, reduce stress and build lasting positivity."/>
@@ -196,36 +233,11 @@
 
 
   /* Order bump */
-  .bump{margin:.65rem 0 0}
-  .bump-card{
-    display:block;
-    width:100%;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:13px 14px;
-    cursor:pointer;
-    box-shadow:0 4px 14px rgba(0,0,0,.04);
-    transition:border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
-  }
-  .bump-card:hover{border-color:#111;box-shadow:0 8px 22px rgba(0,0,0,.08);transform:translateY(-1px)}
-  .bump-inner{display:flex;align-items:center;gap:12px}
-  .bump-card input{width:20px;height:20px;flex:0 0 auto;accent-color:#111}
-  .bump-content{display:flex;align-items:center;justify-content:space-between;gap:14px;flex:1;text-align:left}
-  .bump-text{display:flex;flex-direction:column;line-height:1.22;gap:3px;flex:1}
-  .bump-kicker{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:#0e766e;font-weight:800}
-  .bump-title{font-size:1rem;font-weight:900;color:#111}
-  .bump-outcome{font-size:.9rem;color:#515151}
-  .bump-price{font-size:.92rem;color:#111;font-weight:700}
-  .bump-image{width:58px;height:auto;border-radius:6px;box-shadow:0 5px 12px rgba(0,0,0,.16);transition:transform 160ms ease}
-  .bump-card:hover .bump-image{transform:scale(1.04)}
-  @media (max-width:600px){
-    .bump-card{padding:12px}
-    .bump-content{gap:10px}
-    .bump-image{width:50px}
-    .bump-title{font-size:.96rem}
-    .bump-outcome,.bump-price{font-size:.86rem}
-  }
+  .bump{margin:.4rem 0 0}
+  .bump-label{display:flex;align-items:center;justify-content:flex-start;gap:8px;font-size:.95rem;color:#333;cursor:pointer}
+  .bump input{width:18px;height:18px}
+  .bump-text{display:flex;flex-direction:column;line-height:1.25;}
+  .bump-line{display:block;}
 
 </style>
 
@@ -238,21 +250,7 @@ gtag('js', new Date());
 gtag('config', 'G-ZK9V7QNHVD');
 </script>
 
-<!-- Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '1289131492587826');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1289131492587826&ev=PageView&noscript=1"/></noscript>
 
 <!-- Product schema (updated to $29 and direct URL placeholder) -->
 <script type="application/ld+json">{
@@ -307,19 +305,13 @@ fbq('track', 'PageView');
     <div class="cta-row">
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-hero" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4" aria-label="Start your 30-day reset for $29">Start your 30-day reset for $29</a>
 <div class="bump">
-  <label class="bump-card">
-    <div class="bump-inner">
-      <input type="checkbox" id="bump-hero" checked>
-      <div class="bump-content">
-        <div class="bump-text">
-          <span class="bump-kicker">Complete the full system</span>
-          <span class="bump-title">Awake &amp; Aware: The Art of Meditation</span>
-          <span class="bump-outcome">Build a deeper, more consistent practice beyond the 30 days</span>
-          <span class="bump-price">Included today for just $10 (normally $24)</span>
-        </div>
-        <img src="awake_aware.webp" alt="Awake &amp; Aware book" class="bump-image">
-      </div>
-    </div>
+  <label class="bump-label">
+    <input type="checkbox" id="bump-hero"> 
+    <span class="bump-text">
+      <span class="bump-line">Add</span>
+      <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
+      <span class="bump-line">for just $10 (normally $24)</span>
+    </span>
   </label>
 </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
@@ -364,19 +356,13 @@ fbq('track', 'PageView');
       </div>
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-mid" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Start My 30-Day Shift $29</a>
 <div class="bump">
-  <label class="bump-card">
-    <div class="bump-inner">
-      <input type="checkbox" id="bump-mid" checked>
-      <div class="bump-content">
-        <div class="bump-text">
-          <span class="bump-kicker">Complete the full system</span>
-          <span class="bump-title">Awake &amp; Aware: The Art of Meditation</span>
-          <span class="bump-outcome">Build a deeper, more consistent practice beyond the 30 days</span>
-          <span class="bump-price">Included today for just $10 (normally $24)</span>
-        </div>
-        <img src="awake_aware.webp" alt="Awake &amp; Aware book" class="bump-image">
-      </div>
-    </div>
+  <label class="bump-label">
+    <input type="checkbox" id="bump-mid"> 
+    <span class="bump-text">
+      <span class="bump-line">Add</span>
+      <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
+      <span class="bump-line">for just $10 (normally $24)</span>
+    </span>
   </label>
 </div>
     </div>
@@ -481,19 +467,13 @@ fbq('track', 'PageView');
 </div>
       <a href="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" class="cta js-checkout" id="cta-after-guarantee" data-base-url="https://kulakriya.lemonsqueezy.com/checkout/buy/647e8d2b-5ab5-4406-9932-d46ea765312d" data-bundle-url="https://kulakriya.lemonsqueezy.com/checkout/buy/228651ba-482d-45f4-9e67-570840f5c3f4">Start My 30-Day Shift $29</a>
 <div class="bump">
-  <label class="bump-card">
-    <div class="bump-inner">
-      <input type="checkbox" id="bump-after" checked>
-      <div class="bump-content">
-        <div class="bump-text">
-          <span class="bump-kicker">Complete the full system</span>
-          <span class="bump-title">Awake &amp; Aware: The Art of Meditation</span>
-          <span class="bump-outcome">Build a deeper, more consistent practice beyond the 30 days</span>
-          <span class="bump-price">Included today for just $10 (normally $24)</span>
-        </div>
-        <img src="awake_aware.webp" alt="Awake &amp; Aware book" class="bump-image">
-      </div>
-    </div>
+  <label class="bump-label">
+    <input type="checkbox" id="bump-after"> 
+    <span class="bump-text">
+      <span class="bump-line">Add</span>
+      <span class="bump-line"><strong>Awake &amp; Aware: The Art of Meditation</strong></span>
+      <span class="bump-line">for just $10 (normally $24)</span>
+    </span>
   </label>
 </div>
     </div>
@@ -576,18 +556,23 @@ fbq('track', 'PageView');
   });
 </script>
 
+
 <!-- Lemon Squeezy checkout wiring -->
 <script>
 (function(){
   function safeFbqTrack(eventName, params){
     try {
-      if (window.fbq) fbq('track', eventName, params || {});
+      if (window.fbq) {
+        window.fbq('track', eventName, params || {});
+      }
     } catch(e) {}
   }
 
   function safeGtag(eventName, params){
     try {
-      if (window.gtag) gtag('event', eventName, params || {});
+      if (window.gtag) {
+        window.gtag('event', eventName, params || {});
+      }
     } catch(e) {}
   }
 
@@ -607,18 +592,15 @@ fbq('track', 'PageView');
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    /* Extra PageView fallback for browser/plugin timing issues */
-    setTimeout(function(){
-      safeFbqTrack('PageView');
-    }, 500);
-
     function updateButton(btn){
       var parent = btn.closest('section, .panel, .hero-panel') || document;
       var bump = parent.querySelector('input[id^="bump-"]');
       var useBundle = bump && bump.checked;
       var nextUrl = useBundle ? btn.dataset.bundleUrl : btn.dataset.baseUrl;
 
-      if (nextUrl) btn.href = nextUrl;
+      if (nextUrl) {
+        btn.href = nextUrl;
+      }
 
       if (btn.id !== 'cta-aware-stripe') {
         btn.textContent = useBundle ? 'Start your full reset for $39.99' : 'Start your 30-day reset for $29';
@@ -652,12 +634,13 @@ fbq('track', 'PageView');
 
         setTimeout(function(){
           window.location.href = destination;
-        }, 250);
+        }, 350);
       });
     });
   });
 })();
 </script>
+
 
 
 <script>
