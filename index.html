@@ -25,12 +25,29 @@ window.KK_PIXEL_ID = '1289131492587826';
 
 fbq('init', window.KK_PIXEL_ID);
 
+function kkFirePageView() {
+  try {
+    var eventId = 'pv_' + Date.now() + '_' + Math.random().toString(36).substring(2,8);
+
+    fbq('track', 'PageView', {}, {
+      eventID: eventId
+    });
+  } catch(e) {}
+}
+
 // Fire immediately
-fbq('track', 'PageView');
+kkFirePageView();
 
 // Backup fire on DOM ready
 document.addEventListener('DOMContentLoaded', function() {
-  fbq('track', 'PageView');
+  kkFirePageView();
+});
+
+// Delayed backup fire
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    kkFirePageView();
+  }, 1000);
 });
 </script>
 <noscript>
